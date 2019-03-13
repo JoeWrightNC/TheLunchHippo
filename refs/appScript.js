@@ -55,10 +55,10 @@ function lunchReminder() {
        
       //assemble urls
       //open im url
-      var openChatURL = 'https://slack.com/api/im.open?token=xoxb-2173034834-568510280833-HQgrfEgCxmUX3kdDNTmZsMyY&user='+name+'&pretty=1'
+      var openChatURL = 'https://slack.com/api/im.open?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&user='+name+'&pretty=1'
       //send message url
       var reminderMessage = "You haven't completed your lunch order, don't miss out - view the menu using /hippomenu , order now using /hippoentree !  For more commands and help, type /hippohelp ." 
-      var sendChatURL = 'https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-HQgrfEgCxmUX3kdDNTmZsMyY&channel='+name+'&text='+reminderMessage+'&as_user=TheLunchHippo&pretty=1'
+      var sendChatURL = 'https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel='+name+'&text='+reminderMessage+'&as_user=TheLunchHippo&pretty=1'
 
       
       UrlFetchApp.fetch(openChatURL);
@@ -79,10 +79,10 @@ function arrivalReminder() {
        
       //assemble urls
       //open im url
-      var openArrivalChatURL = 'https://slack.com/api/im.open?token=xoxb-2173034834-568510280833-HQgrfEgCxmUX3kdDNTmZsMyY&user='+name+'&pretty=1'
+      var openArrivalChatURL = 'https://slack.com/api/im.open?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&user='+name+'&pretty=1'
       //send message url
       var reminderArrivalMessage = "Hey!  Just a reminder you ordered a lunch yesterday--don't forget to pick it up at the bar and enjoy!" 
-      var sendArrivalChatURL = 'https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-HQgrfEgCxmUX3kdDNTmZsMyY&channel='+name+'&text='+reminderArrivalMessage+'&as_user=TheLunchHippo&pretty=1'
+      var sendArrivalChatURL = 'https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel='+name+'&text='+reminderArrivalMessage+'&as_user=TheLunchHippo&pretty=1'
 
       UrlFetchApp.fetch(openArrivalChatURL);
       UrlFetchApp.fetch(sendArrivalChatURL);

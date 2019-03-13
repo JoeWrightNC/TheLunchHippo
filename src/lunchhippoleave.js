@@ -17,7 +17,7 @@ function addUser(user) {
         }
       });
     }); 
-    var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-HQgrfEgCxmUX3kdDNTmZsMyY&channel=UCW2TG8F9&text=Hey!%20Just%20a%20heads%20up%20that%20${user.user_name}%20has%20been%20removed%20from%20future%20lunch%20orders&as_user=TheLunchHippo&pretty=1`
+    var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel=UCW2TG8F9&text=Hey!%20Just%20a%20heads%20up%20that%20${user.user_name}%20has%20been%20removed%20from%20future%20lunch%20orders&as_user=TheLunchHippo&pretty=1`
     var postSignUp=axios.post(addUrl)
     postSignUp.then(() => {
         console.log("postSignUp Then Statement");
