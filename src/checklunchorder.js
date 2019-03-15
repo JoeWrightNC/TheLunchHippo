@@ -14,8 +14,6 @@ var hippoCheckReponses = [
   "Why don't you ever see hippos hiding in trees???  Because we're really good at it."
 ]
 
-var randomNumber = Math.floor(Math.random() * Math.floor(hippoCheckReponses.length));
-
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
         // Get all of the rows from the spreadsheet.  
@@ -29,7 +27,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
             console.log(err);
           }
           return resolve({
-            text: `Your lunch order is: "${order.order}". The notes you've added are: "${order.notes}".  The total you've got down is: "${order.total}".  ${hippoCheckReponses[randomNumber]}`,
+            text: `Your lunch order is: "${order.order}". The notes you've added are: "${order.notes}".  The total you've got down is: "${order.total}".  ${hippoCheckReponses[Math.floor(Math.random() * Math.floor(hippoCheckReponses.length))]}`,
           })
         });
     }); 
