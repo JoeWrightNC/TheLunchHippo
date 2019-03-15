@@ -5,6 +5,17 @@ var creds = require('./client_secret.json');
 
 var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
+var hippoCheckReponses = [
+  "While I got you, what do you call a hippo who wears glasses and listens to Morrisey? ... A Hip(po)ster hahahaha!",
+  "I've been wondering... What is soy milk is just normal milk introducing itself in Spanish??",
+  "Hey, while we're chatting, do you know why the sesame seed couldn't leave the casino??  BECAUSE HE WAS ON A ROLL lol.",
+  "Hopefully it won't be like the last lunch you ordered with that nosey pepper in it.  It was jalapeno business.",
+  "What's the difference between a hippo and a Zippo??  One is really heavy, the other is a little lighter!",
+  "Why don't you ever see hippos hiding in trees???  Because we're really good at it."
+]
+
+var randomNumber = Math.floor(Math.random() * Math.floor(hippoCheckReponses.length));
+
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
         // Get all of the rows from the spreadsheet.  
@@ -18,7 +29,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
             console.log(err);
           }
           return resolve({
-            text: `Your lunch order is: "${order.order}". The notes you've added are: "${order.notes}".  The total you've got down is: "${order.total}" While I got you, what do you call a hippo who wears glasses and listens to Morrisey? ... A Hip(po)ster hahahaha!`,
+            text: `Your lunch order is: "${order.order}". The notes you've added are: "${order.notes}".  The total you've got down is: "${order.total}".  ${hippoCheckReponses[randomNumber]}`,
           })
         });
     }); 
