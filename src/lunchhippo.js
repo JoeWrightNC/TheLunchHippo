@@ -8,6 +8,7 @@ var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 
 function addUser(user) {
+  console.log(user)
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
             if (rows === undefined || rows.length == 0) {
