@@ -8,12 +8,17 @@ var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 
 function addUser(user) {
-  console.log(user)
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
             if (rows === undefined || rows.length == 0) {
                 doc.addRow(1, { Slack: user.user_id, Name: user.user_name, Participating: "Yes" }, function(err) {
-                    if(err) {
+                  var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel=UCW2TG8F9&text=Hey!%20Just%20letting%20you%20know%20that%20${user.user_name}%20has%20been%20added%20to%20the%20lunch%20program&as_user=TheLunchHippo&pretty=1`
+                  var postSignUp=axios.post(addUrl)
+                  postSignUp.then(() => {
+                      console.log("postSignUp Then Statement");
+                  })
+                  return postSignUp;  
+                  if(err) {
                         console.log(err);
                     }
                 }); 
@@ -22,14 +27,7 @@ function addUser(user) {
               console.log(err);
             }
           });
-        
     }); 
-    var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel=UCW2TG8F9&text=Hey!%20Just%20letting%20you%20know%20that%20${user.user_name}%20has%20been%20added%20to%20the%20lunch%20program&as_user=TheLunchHippo&pretty=1`
-    var postSignUp=axios.post(addUrl)
-    postSignUp.then(() => {
-        console.log("postSignUp Then Statement");
-    })
-    return postSignUp;
 };
 
 
