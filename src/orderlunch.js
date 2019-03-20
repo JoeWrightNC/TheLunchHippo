@@ -16,7 +16,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
             console.log("Rows");
             console.log(rows);
-            if (rows === undefined || array.length == 0) {
+            if (rows === undefined || rows.length == 0) {
                 returnText = "You have to join the lunch program first by typing /hippostart!";
                 feedback(returnText);
             } else {
