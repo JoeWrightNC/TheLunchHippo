@@ -9,7 +9,9 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
         // Get all of the rows from the spreadsheet.
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
-          rows[0].order = "notToday";
+          rows[0].order = "Not Ordering Today";
+          rows[0].notes = "";
+          rows[0].total = "";
           rows[0].save();
           if(err) {
             console.log(err);
