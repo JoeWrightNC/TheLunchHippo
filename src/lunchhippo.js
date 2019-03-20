@@ -11,7 +11,15 @@ function addUser(user) {
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
             if (rows === undefined || rows.length == 0) {
-              var userName = user.user_name.replace(".", " ");
+              var tempUserName = user.user_name.replace(".", " ");
+              const toTitleCase = (phrase) => {
+                return phrase
+                  .toLowerCase()
+                  .split(' ')
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ');
+              };
+              let userName = toTitleCase(tempUserName);
                 doc.addRow(1, { Slack: user.user_id, Name: userName, Participating: "Yes" }, function(err) {
                     if(err) {
                         console.log(err);
