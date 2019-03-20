@@ -11,7 +11,8 @@ function addUser(user) {
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
             if (rows === undefined || rows.length == 0) {
-                doc.addRow(1, { Slack: user.user_id, Name: user.user_name, Participating: "Yes" }, function(err) {
+              var userName = user.user_name.replace(".", " ");
+                doc.addRow(1, { Slack: user.user_id, Name: userName, Participating: "Yes" }, function(err) {
                     if(err) {
                         console.log(err);
                     }
