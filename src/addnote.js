@@ -11,22 +11,26 @@ var returnText = ""
 
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
-    // Get all of the rows from the spreadsheet.
+        // Get all of the rows from the spreadsheet.
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
-            if (user.user_id) {
-                rows[0].notes = user.text;
-                rows[0].save();
-                returnText = `The notes for your lunch order are: "${user.text}". Pretty Hip(po).`
+            if (rows === undefined || rows.length == 0) {
+                returnText = "You have to join the lunch program first by typing /hippostart!";
+                feedback(returnText);
             } else {
-                returnText = "You have to join the lunch program first by typing /hippostart!"
+                rows[0].order = user.text;
+                rows[0].save();
+                returnText = `The notes for your lunch order are: "${user.text}". Pretty Hip(po).`;
+                feedback(returnText);
             }
             if(err) {
                 console.log(err);
             }
         });
-        return resolve({
-            text: returnText,
-        })
+        function feedback(returnText) {
+            return resolve({
+                text: returnText,
+            })
+        }
     });
 })
 
