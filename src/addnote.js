@@ -13,13 +13,17 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
     // Get all of the rows from the spreadsheet.
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
-            rows[0].notes = user.text;
-            rows[0].save();
+            if (user.user_id) {
+                rows[0].notes = user.text;
+                rows[0].save();
+                returnText = `The notes for your lunch order are: "${user.text}". Pretty Hip(po).`
+            } else {
+                returnText = "You have to join the lunch program first by typing /hippostart!"
+            }
             if(err) {
                 console.log(err);
             }
         });
-        returnText = `The notes for your lunch order are: "${user.text}". Pretty Hip(po).`
         return resolve({
             text: returnText,
         })
