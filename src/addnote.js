@@ -17,7 +17,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
                 returnText = "You have to join the lunch program first by typing /hippostart!";
                 feedback(returnText);
             } else {
-                rows[0].order = user.text;
+                rows[0].notes = user.text;
                 rows[0].save();
                 returnText = `The notes for your lunch order are: "${user.text}". Pretty Hip(po).`;
                 feedback(returnText);
