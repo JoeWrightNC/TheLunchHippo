@@ -7,7 +7,7 @@ var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 var hippoCheckReponses = [
   "While I got you, what do you call a hippo who wears glasses and listens to Morrisey? ... A Hip(po)ster hahahaha!",
-  "I've been wondering... What is soy milk is just normal milk introducing itself in Spanish??",
+  "I've been wondering... What if soy milk is just normal milk introducing itself in Spanish??",
   "Hey, while we're chatting, do you know why the sesame seed couldn't leave the casino??  BECAUSE HE WAS ON A ROLL lol.",
   "Hopefully it won't be like the last lunch you ordered with that nosey pepper in it.  It was jalapeno business.",
   "What's the difference between a hippo and a Zippo??  One is really heavy, the other is a little lighter!",
