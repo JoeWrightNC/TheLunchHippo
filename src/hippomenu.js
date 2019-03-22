@@ -14,6 +14,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
         // Get all of the rows from the spreadsheet.
         doc.getCells(2, { "min-row": 2, "max-row":2, "min-col": 3, "max-col": 3, "return-empty": true }, function(err, cells) {
             const restaurant = cells[0]._value;
+            console.log(restaurant);
             if (restaurant=="Ruckus") {
                 sheetIndex = 4
             } 
