@@ -20,6 +20,15 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
             else if (restaurant == "Panera") {
                 sheetIndex = 3
             }
+            else if (restaurant == "Enrigo") {
+                sheetIndex = 5
+            }
+            else if (restaurant == "Jasons") {
+                sheetIndex = 6
+            }
+            else if (restaurant == "Tazikis") {
+                sheetIndex = 7
+            }
             if(err) {
                 console.log(err);
             }
