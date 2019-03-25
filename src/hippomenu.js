@@ -33,7 +33,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
             if(err) {
                 console.log(err);
             }
-            doc.getRows(sheetIndex, function(err, menu){
+            doc.getRows(sheetIndex, {limit: 20},function(err, menu){
                 for(var i = 0; i < menu.length; i++) {
                     var menuJSON = menu[i];
                     var menuLine = `*${menuJSON.item}*\n${menuJSON.description}\n${menuJSON.price}\n\n`;
