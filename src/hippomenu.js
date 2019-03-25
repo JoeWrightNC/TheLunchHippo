@@ -47,6 +47,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
         });
     });
     function responder(response) {
+        returnText ="\n"
         return resolve({
             text: response,
         })
