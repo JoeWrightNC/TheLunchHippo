@@ -39,6 +39,7 @@ const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
                     var menuLine = `*${menuJSON.item}*\n${menuJSON.description}\n${menuJSON.price}\n\n`;
                     returnText += menuLine;
                 } 
+                console.log(returnText);
                 responder(returnText)
                 if(err) {
                     console.log(err);
