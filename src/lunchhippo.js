@@ -32,7 +32,7 @@ function addUser(user) {
           });
         
     }); 
-    var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel=UCW2TG8F9&text=Hey!%20Just%20letting%20you%20know%20that%20${user.user_name}%20has%20been%20added%20to%20the%20lunch%20program&as_user=TheLunchHippo&pretty=1`
+    var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel=lunchadmin&text=Hey!%20Just%20letting%20you%20know%20that%20${user.user_name}%20has%20been%20added%20to%20the%20lunch%20program&as_user=TheLunchHippo&pretty=1`
     var postSignUp=axios.post(addUrl)
     postSignUp.then(() => {
         console.log("postSignUp Then Statement");
