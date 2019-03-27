@@ -5,6 +5,7 @@ var creds = require('./client_secret.json');
 
 var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
+//we've got jokes.  Specifically, an array of random jokes we'll be telling our end users to make this more fun
 var hippoCheckReponses = [
   "While I got you, what do you call a hippo who wears glasses and listens to Morrisey? ... A Hip(po)ster hahahaha!",
   "I've been wondering... What if soy milk is just normal milk introducing itself in Spanish??",
@@ -17,7 +18,7 @@ var hippoCheckReponses = [
 
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
-        // Get all of the rows from the spreadsheet.  
+        // Get all of the rows from the spreadsheet.  find theirs, read the order back to them
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
           const order = {
               order: rows[0].order,

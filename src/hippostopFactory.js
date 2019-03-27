@@ -9,7 +9,7 @@ var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 function addUser(user) {
     doc.useServiceAccountAuth(creds, function (err) {
-      // Get all of the rows from the spreadsheet.
+      // Get all of the rows from the spreadsheet.  Query to find user
       doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
         rows[0].del();
         if(err) {
@@ -17,6 +17,7 @@ function addUser(user) {
         }
       });
     }); 
+    //notify lunch admins of persons removal via slack
     var addUrl = `https://slack.com/api/chat.postMessage?token=xoxb-2173034834-568510280833-RhSjEUjRrlLiHyiUVrCWlxO2&channel=lunchadmin&text=Hey!%20Just%20a%20heads%20up%20that%20${user.user_name}%20has%20been%20removed%20from%20future%20lunch%20orders&as_user=TheLunchHippo&pretty=1`
     var postSignUp=axios.post(addUrl)
     postSignUp.then(() => {

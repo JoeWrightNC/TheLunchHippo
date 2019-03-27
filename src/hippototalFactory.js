@@ -7,8 +7,9 @@ var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
-        // Get all of the rows from the spreadsheet.
+        // Get all of the rows from the spreadsheet. query to find row of user
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
+          //update total
           rows[0].total = user.text;
           rows[0].save();
           if(err) {

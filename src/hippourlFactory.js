@@ -1,6 +1,6 @@
-// src/slashCommand.js
 const commandParser = require('./commandParser')
 const validateCommandInput = require('./validateCommandInput')
+
 
 const createErrorAttachment = (error) => ({
   color: 'danger',

@@ -7,7 +7,7 @@ var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
     doc.useServiceAccountAuth(creds, function (err) {
-        // Get all of the rows from the spreadsheet.
+        // Get all of the rows from the spreadsheet. find the user, set the not today text.
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
           rows[0].order = "Not Ordering Today";
           rows[0].notes = "";

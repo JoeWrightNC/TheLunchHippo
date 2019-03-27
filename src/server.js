@@ -1,29 +1,29 @@
 // src/server.js
+
+//gather the modules
 const Express = require('express')
 const bodyParser = require('body-parser')
 const createShortUrlsFactory = require('./createShortUrls')
-const slashCommandFactory = require('./slashCommand')
-const lunchHippoFactory = require('./lunchhippo')
-const lunchHippoLeaveFactory = require('./lunchhippoleave')
-const orderLunchFactory = require('./orderlunch')
-const addNoteFactory= require('./addnote')
-const addTotalFactory = require('./addtotal')
-const helpMeHippoFactory = require('./helpmehippo')
-const checkOrderFactory = require('./checklunchorder')
-const notTodayFactory = require('./nottoday')
-const hippoMenuFactory = require('./hippomenu');
-var GoogleSpreadsheet = require('google-spreadsheet');
-var creds = require('./client_secret.json');
-
-var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
-
-
-//sup
+const hippourlFactory = require('./hippourlFactory')
+const hippostartFactory = require('./hippostartFactory')
+const hippostopFactory = require('./hippostopFactory')
+const hippoentreeFactory = require('./hippoentreeFactory')
+const hipponoteFactory= require('./hipponoteFactory')
+const hippototalFactory = require('./hippototalFactory')
+const hippohelpFactory = require('./hippohelpFactory')
+const hippocheckFactory = require('./hippocheckFactory')
+const hippobreakFactory = require('./hippobreakFactory')
+const hippomenuFactory = require('./hippomenuFactory');
+const GoogleSpreadsheet = require('google-spreadsheet');
+const creds = require('./client_secret.json');
+const doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
 
+//crank that server
 const app = new Express()
 app.use(bodyParser.urlencoded({extended: true}))
 
+//configure environment
 const {SLACK_TOKEN: slackToken, REBRANDLY_APIKEY: apiKey, PORT} = process.env
 
 if (!slackToken || !apiKey) {
@@ -33,17 +33,21 @@ if (!slackToken || !apiKey) {
 
 const port = PORT || 80
 
+//easily call our factories to work as we route
 const rebrandlyClient = createShortUrlsFactory(apiKey)
-const slashCommand = slashCommandFactory(rebrandlyClient, slackToken)
-const lunchHippo = lunchHippoFactory()
-const lunchHippoLeave = lunchHippoLeaveFactory()
-const orderLunch = orderLunchFactory()
-const addNote = addNoteFactory()
-const addTotal = addTotalFactory()
-const helpmehippo = helpMeHippoFactory()
-const checkorder = checkOrderFactory()
-const nottoday = notTodayFactory()
-const hippomenu = hippoMenuFactory()
+const slashCommand = hippourlFactory(rebrandlyClient, slackToken)
+const lunchHippo = hippostartFactory()
+const lunchHippoLeave = hippostopFactory()
+const orderLunch = hippoentreeFactory()
+const addNote = hipponoteFactory()
+const addTotal = hippototalFactory()
+const helpmehippo = hippohelpFactory()
+const checkorder = hippocheckFactory()
+const nottoday = hippobreakFactory()
+const hippomenu = hippomenuFactory()
+
+//Its like a switch case, but you know, messier.
+//Clean up in 2.0, routes grew more than expected in MVP
 app.post('/', (req, res) => {
     if(req.body.command == "/hippourl") {
         slashCommand(req.body)
@@ -117,6 +121,7 @@ app.post('/', (req, res) => {
     }
 })
 
+//say hello world, but more useful
 app.listen(port, () => {
   console.log(`Server started at localhost:${port}`)
 })
