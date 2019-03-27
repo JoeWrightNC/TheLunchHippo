@@ -35,78 +35,78 @@ const port = PORT || 80
 
 //easily call our factories to work as we route
 const rebrandlyClient = createShortUrlsFactory(apiKey)
-const slashCommand = hippourlFactory(rebrandlyClient, slackToken)
-const lunchHippo = hippostartFactory()
-const lunchHippoLeave = hippostopFactory()
-const orderLunch = hippoentreeFactory()
-const addNote = hipponoteFactory()
-const addTotal = hippototalFactory()
-const helpmehippo = hippohelpFactory()
-const checkorder = hippocheckFactory()
-const nottoday = hippobreakFactory()
+const hippourl = hippourlFactory(rebrandlyClient, slackToken)
+const hippostart = hippostartFactory()
+const hippostop = hippostopFactory()
+const hippoentree = hippoentreeFactory()
+const hipponote = hipponoteFactory()
+const hippototal = hippototalFactory()
+const hippohelp = hippohelpFactory()
+const hippocheck = hippocheckFactory()
+const hippobreak = hippobreakFactory()
 const hippomenu = hippomenuFactory()
 
 //Its like a switch case, but you know, messier.
 //Clean up in 2.0, routes grew more than expected in MVP
 app.post('/', (req, res) => {
     if(req.body.command == "/hippourl") {
-        slashCommand(req.body)
+        hippourl(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippostart") {
-        lunchHippo(req.body)
+        hippostart(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippostop") {
-        lunchHippoLeave(req.body)
+        hippostop(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippoentree") {
-        orderLunch(req.body)
+        hippoentree(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hipponote") {
-        addNote(req.body)
+        hipponote(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippototal") {
-        addTotal(req.body)
+        hippototal(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippohelp") {
-        helpmehippo(req.body)
+        hippohelp(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippocheck") {
-        checkorder(req.body)
+        hippocheck(req.body)
         .then((result) => {
         return res.json(result)
         })
         .catch(console.error)
     }
     else if(req.body.command == "/hippobreak") {
-        nottoday(req.body)
+        hippobreak(req.body)
         .then((result) => {
         return res.json(result)
         })
