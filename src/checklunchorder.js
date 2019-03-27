@@ -11,7 +11,8 @@ var hippoCheckReponses = [
   "Hey, while we're chatting, do you know why the sesame seed couldn't leave the casino??  BECAUSE HE WAS ON A ROLL lol.",
   "Hopefully it won't be like the last lunch you ordered with that nosey pepper in it.  It was jalapeno business.",
   "What's the difference between a hippo and a Zippo??  One is really heavy, the other is a little lighter!",
-  "Why don't you ever see hippos hiding in trees???  Because we're really good at it."
+  "Why don't you ever see hippos hiding in trees???  Because we're really good at it.",
+  "I was thinking I'd probably head downtown this weekend.  Take the hippopotabus."
 ]
 
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
