@@ -1,21 +1,17 @@
 // src/lunchhippo.js
 
-var GoogleSpreadsheet = require('google-spreadsheet');
-var creds = require('./client_secret.json');
+const GoogleSpreadsheet = require('google-spreadsheet');
+const creds = require('./client_secret.json');
 
-var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
+const doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
 
-var today = new Date();
-var time = today.getHours();
-var returnText = ""
+let returnText = ""
 
 const lunchHippoFactory = () => (user) => new Promise((resolve, reject) => {
 
     doc.useServiceAccountAuth(creds, function (err) {
         // Get all of the rows from the spreadsheet. find row of user
         doc.getRows(1, { query: `slack="${user.user_id}"` }, function(err, rows) {
-            console.log("Rows");
-            console.log(rows);
             //make sure no false positives, that they have a row to write to, tell them to sign up if not
             if (rows === undefined || rows.length == 0) {
                 returnText = "You have to join the lunch program first by typing /hippostart!";
