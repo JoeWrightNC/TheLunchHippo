@@ -3,7 +3,7 @@
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('./client_secret.json');
 
-var doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
+const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID');
 
 var today = new Date();
 var time = today.getHours();
