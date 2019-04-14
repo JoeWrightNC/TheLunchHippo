@@ -3,7 +3,7 @@
 const GoogleSpreadsheet = require('google-spreadsheet');
 const creds = require('./client_secret.json');
 
-const doc = new GoogleSpreadsheet('1EK44HOjD7FPy5KlWmmtPytC9LODhJEhTh9bgiuYmDx0');
+const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID');
 
 let returnText = ""
 

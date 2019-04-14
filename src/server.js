@@ -13,7 +13,7 @@ const hippocheckFactory = require('./hippocheckFactory')
 const hippobreakFactory = require('./hippobreakFactory')
 const hippomenuFactory = require('./hippomenuFactory');
 const GoogleSpreadsheet = require('google-spreadsheet');
-const doc = new GoogleSpreadsheet('YOUR SPREADSHEET ID HERE');
+const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID');
 
 
 //crank that server
