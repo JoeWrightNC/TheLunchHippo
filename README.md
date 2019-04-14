@@ -1,3 +1,3 @@
 # LunchHippo
 
-ReadMe coming soon.
+Medium Article coming soon!
